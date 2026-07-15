@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-body-tertiary mb-3 fixed-top "
+        style="font-size: 20px;background-image: linear-gradient(#B86947,#EDDD53);">
+        <div class="container-fluid ">
+            <a class="logo" href="./index.html"><img src="./logo.png-removebg-preview.png" alt=""
+                    style="width: 80px;height: 80px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav w-100 d-flex justify-content-evenly">
+                    <li class="nav-item ">
+                        <a class="nav-link " aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Menu
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./menu.html">All Items</a></li>
+                            <li><a class="dropdown-item" href="./menu.html?cat=Espresso specialty">Espresso
+                                    specialty</a></li>
+                            <li><a class="dropdown-item" href="./menu.html?cat=Snacks">Snacks</a></li>
+                            <li><a class="dropdown-item" href="./menu.html?cat=Savory Snacks">Savory Snacks</a></li>
+                            <li><a class="dropdown-item" href="./menu.html?cat=Sweet Treats">Sweet Treats</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./order.html">Order </a>
+                    </li>
+
+
+                </ul>
+                <div style="position: relative; width:350px;">
+                    <input class="form-control" style="width:350px" type="search" placeholder="Search items..."
+                        id="searchBar" onkeyup="showSuggestions(event)">
+
+                    <div id="suggestBox" style="position:absolute; background:white; width:100%; 
+                      border:1px solid #ccc; z-index:1000; display:none;"></div>
+                    <button id="clearSearch" class="btn btn-secondary btn-sm" style="position:absolute; right:0; top:0;"
+                        onclick="clearSearch()">X</button>
+                </div>
+
+            </div>
+
+
+
+            <div class="p-3">
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
+            </div>
+        </div>
+
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end " style="width: 450px;" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasRightLabel">Welcome Dude...❤</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="row">
+
+            </div>
+
+            <h3 class="text-primary">Total cost : <span id="tot">0</span></h3>
+
+
+        </div>
+    </div>
+
+    <!-- menu -->
+    <div class="container">
+        <h2 id="categoryTitle" class="text-center"></h2>
+        <div class="row  ">
+            <h2 class=" one category-heading" data-cat="Espresso specialty"
+                style="text-align: center;color: rgb(151, 17, 17);">Espresso specialty</h2>
+            <div class="col-md-4 p-3 border product-card item" data-cat="Espresso specialty">
+                <img src="./Cappuccino.jpg" width="100%" height="400px">
+                <h3>Cappuccino</h3>
+                <h4>$200.00</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        onclick="product('./Cappuccino.jpg','Cappuccino',200 )">Add to
+                        cart</button>
+                </div>
+            </div>
+            <div class="col-md-4 p-3 border product-card item" data-cat="Espresso specialty">
+                <img src="./Cafe latte.jpg" width="100%" height="400px">
+                <h3>Cafe Latte</h3>
+                <h4>$180.00</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        onclick="product('./Cafe latte.jpg','Cafe latte',180 )">Add to
+                        cart</button>
+                </div>
+            </div>
+            <div class="col-md-4 p-3 border product-card item" data-cat="Espresso specialty">
+                <img src="./Flate white.jpg" width="100%" height="400px">
+                <h3>Flate white</h3>
+                <h4>$170.00</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        onclick="product('./Flate white.jpg','Flate white',170 )">Add to
+                        cart</button>
+                </div>
+            </div>
+            <div class="row ">
+                <h2 class="  category-heading" data-cat="Snacks" style="text-align: center;color: rgb(151, 17, 17);">
+                    Snacks</h2>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Snacks">
+                    <img src="./Cinnamon roll.jpg" width="100%" height="400px">
+                    <h3>Cinnamon roll</h3>
+                    <h4>$160.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Cinnamon roll.jpg','Cinnamon roll',160 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Snacks">
+                    <img src="./Scone.jpg" width="100%" height="400px">
+                    <h3>Scone </h3>
+                    <h4>$130.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Scone.jpg','Scone',130 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Snacks">
+                    <img src="./Danish.jpg" width="100%" height="400px">
+                    <h3>Danish </h3>
+                    <h4>$150.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Danish.jpg','Danish',150 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <h2 class="category-heading mb-3 mt-3" data-cat="Savory Snacks"
+                    style="text-align: center;color: rgb(151, 17, 17);">Savory Snacks</h2>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Savory Snacks">
+                    <img src="./Sandwich.jpg" width="100%" height="400px">
+                    <h3>Sandwich </h3>
+                    <h4>$160.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Sandwich.jpg','Sandwich',160 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Savory Snacks">
+                    <img src="./Quiche.jpg" width="100%" height="400px">
+                    <h3>Quiche </h3>
+                    <h4>$130.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Quiche.jpg','Quiche',130 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Savory Snacks">
+                    <img src="./Savory scone.jpg" width="100%" height="400px">
+                    <h3>Savory Scone </h3>
+                    <h4>$150.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Savory scone.jpg','Savory scone',150 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <h2 class="category-heading  mb-3 mt-3" data-cat="Sweet Treats"
+                    style="text-align: center;color: rgb(151, 17, 17);">Sweet Treats</h2>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Sweet Treats">
+                    <img src="./Cookies.jpg" width="100%" height="400px">
+                    <h3>Cookies </h3>
+                    <h4>$160.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Cookies.jpg','Cookies',160 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Sweet Treats">
+                    <img src="./Mini cupcake.jpg" width="100%" height="400px">
+                    <h3>Mini Cupcake </h3>
+                    <h4>$90.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Mini cupcake.jpg','Mini cupcake',90 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 p-3 border product-card item" data-cat="Sweet Treats">
+                    <img src="./Biscotti.jpg" width="100%" height="400px">
+                    <h3>Biscotti </h3>
+                    <h4>$100.00</h4>
+                    <div class="text-center">
+                        <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            onclick="product('./Biscotti.jpg','Biscotti',100 )">Add to
+                            cart</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <button onclick="history.back()" class="btn btn-success d-flex  justify-content-center align-items-center">Go
+            Back</button>
+
+
+
+        <style>
+            body {
+                font-family: "Creepster", system-ui;
+            }
+
+            h3 {
+                padding-top: 20px;
+                text-align: center;
+            }
+
+            h4 {
+                text-align: center;
+            }
+
+            .menu {
+                margin-top: 100px;
+
+            }
+
+            .one {
+                margin-top: 100px;
+            }
+        </style>
+        <script>
+            var row = document.getElementById("row")
+            var tot = document.getElementById("tot")
+            var cart = []
+            var total = 0
+
+            function product(img, name, price) {
+                var exists = cart.find(item => item.cartname === name);
+
+                if (exists) {
+                    exists.cartquantity += 1;
+                } else {
+                    cart.push({ cartimg: img, cartname: name, cartprice: price, cartquantity: 1 })
+                }
+                result();
+            }
+
+            function remove1(name1) {
+                cart = cart.filter(item => item.cartname !== name1)
+                result()
+            }
+
+            function inc(name) {
+                cart.forEach(item => {
+                    if (item.cartname === name) {
+                        item.cartquantity += 1;
+                    }
+                })
+                result()
+            }
+
+            function decrease(name) {
+                cart.forEach(item => {
+                    if (item.cartname === name && item.cartquantity > 1) {
+                        item.cartquantity -= 1;
+                    }
+                })
+                result()
+            }
+
+            function result() {
+                total = 0
+                row.innerHTML = ""
+
+                if (cart.length === 0) {
+                    tot.innerText = 0
+                }
+
+                cart.forEach((e) => {
+                    total += e.cartprice * e.cartquantity;
+                    tot.innerText = total;
+
+                    row.innerHTML += `
+      <div class="row my-3 p-1 border-bottom">
+          <div class="col-3">
+              <img src="${e.cartimg}" width="100%">
+          </div>
+
+          <h5 class="col-3 d-flex align-items-center" style="color:brown;">
+              ${e.cartname}
+          </h5>
+
+          <div class="col-1 d-flex align-items-center">
+              ${e.cartprice}
+          </div>
+
+          <div class="col-4 d-flex align-items-center">
+              <button class="btn btn-sm btn-success" onclick="inc('${e.cartname}')">+</button>
+              <input type="text" value="${e.cartquantity}" class="mx-2 text-center" style="width:40px" disabled>
+              <button class="btn btn-sm btn-success" onclick="decrease('${e.cartname}')">-</button>
+              <button class="btn btn-close btn-danger m-1 p-2" onclick="remove1('${e.cartname}')"></button>
+          </div>
+        </div>`
+                })
+            }
+
+
+            // SEARCH + CATEGORY FILTER
+
+            const searchBar = document.getElementById("searchBar");
+            const suggestBox = document.getElementById("suggestBox");
+            const menuItems = Array.from(document.querySelectorAll(".product-card"));
+            const headings = document.querySelectorAll(".category-heading");
+
+            let suggestions = [];
+
+            function showSuggestions(e) {
+                const query = searchBar.value.toLowerCase().trim();
+                suggestions = [];
+
+                if (query === "") {
+                    suggestBox.style.display = "none";
+                    applyCategoryFilter();
+                    return;
+                }
+
+                suggestions = menuItems
+                    .map(item => item.querySelector("h3").innerText)
+                    .filter(name => name.toLowerCase().includes(query));
+
+                if (suggestions.length > 0) {
+                    suggestBox.innerHTML = suggestions.map((s, i) =>
+                        `<div style="padding:5px; cursor:pointer;" onclick="selectSuggestion(${i})">${s}</div>`
+                    ).join("");
+
+                    suggestBox.style.display = "block";
+                } else {
+                    suggestBox.style.display = "none";
+                }
+
+                if (e.key === "Enter") {
+                    filterBySearch(query);
+                    suggestBox.style.display = "none";
+                }
+            }
+
+            function filterBySearch(query) {
+                menuItems.forEach(item => {
+                    const itemName = item.querySelector("h3").innerText.toLowerCase();
+                    item.style.display = itemName.includes(query) ? "block" : "none";
+                });
+
+                updateHeadingsDisplay();
+            }
+
+            function selectSuggestion(index) {
+                const selected = suggestions[index];
+                searchBar.value = selected;
+                filterBySearch(selected.toLowerCase());
+                suggestBox.style.display = "none";
+            }
+
+            function clearSearch() {
+                searchBar.value = "";
+                suggestBox.style.display = "none";
+                applyCategoryFilter();
+            }
+
+
+            // MAIN CATEGORY FILTER FUNCTION
+            function applyCategoryFilter() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedCategory = urlParams.get("cat");
+
+                let searchQuery = searchBar.value.toLowerCase().trim();
+
+                menuItems.forEach(item => {
+                    const itemCat = item.getAttribute("data-cat");
+                    const name = item.querySelector("h3").innerText.toLowerCase();
+
+                    let showItem = true;
+
+                    if (selectedCategory && selectedCategory !== "All Items" && itemCat !== selectedCategory) {
+                        showItem = false;
+                    }
+
+                    if (searchQuery !== "" && !name.includes(searchQuery)) {
+                        showItem = false;
+                    }
+
+                    item.style.display = showItem ? "block" : "none";
+                });
+
+                updateHeadingsDisplay();
+            }
+
+
+            // Proper heading visibility control
+            function updateHeadingsDisplay() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedCategory = urlParams.get("cat");
+
+                headings.forEach(head => {
+                    const headCat = head.getAttribute("data-cat");
+
+                    let hasVisibleItems = menuItems.some(item =>
+                        item.getAttribute("data-cat") === headCat &&
+                        window.getComputedStyle(item).display !== "none"
+                    );
+
+
+                    if ((!selectedCategory || selectedCategory === "All Items") && hasVisibleItems) {
+                        head.style.display = "block";
+                    }
+                    else if (selectedCategory === headCat && hasVisibleItems) {
+                        head.style.display = "block";
+                    }
+                    else {
+                        head.style.display = "none";
+                    }
+                });
+            }
+
+            applyCategoryFilter();
+
+        </script>
+
+
+
+
+        <script src="./bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

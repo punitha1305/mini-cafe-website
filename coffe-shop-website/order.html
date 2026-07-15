@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Order page</title>
+
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-expand-sm bg-body-tertiary mb-3 fixed-top "
+        style="font-size: 20px;background-image: linear-gradient(#B86947,#EDDD53);">
+        <div class="container-fluid ">
+            <a class="logo" href="./home.html"><img src="./images/logo.png-removebg-preview.png" alt=""
+                    style="width: 80px;height: 80px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav w-100 d-flex justify-content-evenly">
+                    <li class="nav-item ">
+                        <a class="nav-link " aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./index.html">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="./menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="./order.html">Order </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./index.html">Contact</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+        </div>
+    </nav>
+    <div class="order container p-4 ">
+        <h2 class="text-center text-dark mb-4">Order Details</h2>
+
+        <!-- Order Summary -->
+        <div class="card mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h4>Your Cart Items</h4>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>Item</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orderTable"></tbody>
+
+                </table>
+
+                <h4 class="text-end text-success">
+                    Grand Total: ₹ <span id="grandTotal">0</span>
+                </h4>
+            </div>
+        </div>
+
+        <!-- Customer Form -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-dark text-white">
+                <h4>Customer Information</h4>
+            </div>
+
+            <div class="card-body">
+                <form>
+
+                    <div class="container">
+                        <div class="mb-3">
+                            <label style="font-size: 20px;">Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label style="font-size: 20px;">Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Enter phone number" required>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label style="font-size: 20px;">Address</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter delivery address"
+                                required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label style="font-size: 20px;">Payment Method</label>
+                            <select class="form-select">
+                                <option>Cash on Delivery</option>
+                                <option>UPI</option>
+                                <option>Credit / Debit Card</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label style="font-size: 20px;">Order Notes</label>
+                            <textarea class="form-control" rows="2" placeholder="Any special instructions?"></textarea>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success w-100 py-2" onclick="placeOrder()">
+                        Place Order
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        body {
+            font-family: "Creepster", system-ui;
+            background-image: url(./sign.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+        }
+
+        .order {
+            margin-top: 100px;
+        }
+    </style>
+
+    <script>
+        // Load cart from localStorage
+        const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        const orderTable = document.getElementById("orderTable");
+        const grandTotal = document.getElementById("grandTotal");
+
+        let totalAmount = 0;
+
+        cart.forEach(item => {
+            let itemTotal = item.cartprice * item.cartquantity;
+            totalAmount += itemTotal;
+
+            orderTable.innerHTML += `
+                <tr>
+                    <td>${item.cartname}</td>
+                    <td>${item.cartquantity}</td>
+                    <td>₹${item.cartprice}</td>
+                    <td>₹${itemTotal}</td>
+                </tr>
+            `;
+        });
+
+        grandTotal.innerText = totalAmount;
+
+        // Place order function
+        function placeOrder() {
+            alert("🎉 Your order has been placed successfully!");
+            localStorage.removeItem("cartItems");
+            window.location.href = "./example.html"; //redirect home
+        }
+    </script>
+
+</body>
+
+</html>

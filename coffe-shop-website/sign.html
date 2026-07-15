@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class=" d-flex justify-content-center align-items-center " style="height: 100vh;">
+        <form action="" class=" p-4" id="signupForm">
+            <h3 class="text-center mb-4" style="font-size: 30px;">Create Account</h3>
+
+            <div class="mb-4">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" id="fullname" required />
+                <p id="text" style="color:rgb(52, 166, 204) ;"></p>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required />
+                <p id="user"></p>
+
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required />
+                <p id="pass"></p>
+
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" required />
+                <p id="con" style="color: red;"></p>
+
+            </div>
+            <div class="text-center">
+
+                <button type="submit" class="btn btn-primary mb-5">Sign Up</button>
+            </div>
+            <span class="p-5"> Already have an account? <a style="text-decoration: none;"
+                    href="./index.html">Login</a></span>
+        </form>
+    </div>
+
+    <style>
+        body {
+            font-family: "Creepster", system-ui;
+            background-image: url(./sign.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+        }
+
+        #signupForm {
+            background-color: white !important;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+    </style>
+
+
+    <script>
+        var form = document.getElementById("signupForm")
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var username = document.getElementById("fullname");
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+            var confirmPassword = document.getElementById("confirmPassword");
+            var para = document.getElementById("text");
+            var para1 = document.getElementById("user");
+            var para2 = document.getElementById("pass")
+            var para3 = document.getElementById("con")
+
+            var email1 = /^[a-zA-Z]{1}[a-zA-Z0-9.]+@gmail.com$/;
+            var nameval = /^[a-zA-Z]{6,24}$/;
+
+
+            if (!nameval.test(username.value)) {
+                para.textContent = 'Username must be more than 6 Characters.'
+                return;
+
+            }
+
+            if (!email1.test(email.value)) {
+                para1.textContent = 'Enter a valid email address.'
+                return;
+            }
+
+            if (password.value.length < 6) {
+                para2.textContent = ' must be at least 6 characters.';
+                return;
+            }
+
+            if (password.value !== confirmPassword.value) {
+                para3.textContent = 'Password does not match.';
+                return;
+            }
+
+            alert("Signup successful!");
+        });
+    </script>
+
+
+    <script src="./bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

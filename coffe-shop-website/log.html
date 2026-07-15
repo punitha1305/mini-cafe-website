@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class=" d-flex justify-content-center align-items-center " style="height: 100vh;">
+
+
+
+        <form class="border p-5" id="loginform">
+            <h4 class="text-center p-3">Hello Again!</h4>
+            <div class="mb-3">
+                <label for="Email1" class="form-label" required>Email or Username</label>
+                <input type="text" class="form-control " id="Email1" aria-describedby="emailHelp">
+                <p id="one" style="color: red;"> </p>
+
+            </div>
+            <div class="mb-3">
+                <label for="Password1" class="form-label" required>Password</label>
+                <input type="password" class="form-control" id="Password1">
+                <p id="two" style="color: red;"></p>
+                <a href="#" style="text-decoration: none;">Forgot password</a>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success mb-3">Login</button>
+            </div>
+            <p class="text-center mt-3 mb-0">
+                Don't have an account?
+                <a href="./sign.html" class="text-decoration-none text-success">Sign Up</a>
+            </p>
+        </form>
+
+
+
+    </div>
+
+    <style>
+        body {
+            font-family: "Creepster", system-ui;
+            background-image: url(./sign.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+        }
+
+        #loginform {
+            background-color: white !important;
+            border-radius: 10px;
+
+            border: 1px solid black !important;
+        }
+    </style>
+
+    <script>
+        var text = document.getElementById("Email1")
+        var pass = document.getElementById("Password1")
+        var log = document.getElementById("loginform")
+        var para = document.getElementById("one")
+        var para2 = document.getElementById("two")
+
+        log.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            var email1 = /^[a-zA-Z]{1}[a-zA-Z0-9.]+@gmail.com$/;
+            var nameval = /^[a-zA-Z]{6,24}$/;
+
+
+            if ((!nameval.test(text.value)) && (!email1.test(text.value))) {
+                para.textContent = 'Invalid'
+                return;
+
+            }
+
+            if (pass.value.length < 6) {
+                para2.textContent = ' Password incorrect';
+                return;
+            }
+
+            alert("Login Successful!");
+
+        })
+
+
+
+
+    </script>
+
+
+
+    <script src="./bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

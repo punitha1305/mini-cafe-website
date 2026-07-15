@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-secondary mb-3 fixed-top "
+        style="font-size: 20px;background-image: linear-gradient(#B86947,#EDDD53);">
+        <div class="container-fluid">
+            <a class="logo" href="#"><img src="./images/logo.png-removebg-preview.png" alt=""
+                    style="width: 80px;height: 80px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav w-100 d-flex justify-content-evenly">
+                    <li class="nav-item ">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Menu
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./menu.html#Espresso-specialty">Espresso specialty</a>
+                            </li>
+                            <li><a class="dropdown-item" href="./menu.html#Snacks">Snacks</a></li>
+                            <li><a class="dropdown-item" href="./menu.html#Savory-Snacks">Savory Snacks</a></li>
+                            <li><a class="dropdown-item" href="./menu.html#Sweet-Treats">Sweet Treats</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./order.html">Order </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="./sign.html" style="border-radius: 15px;font-size: 20px;">Sign
+                            Up</a>
+
+                    </li>
+                    <li>
+                        <a class="btn btn-success text-dark" href="./log.html"
+                            style="border-radius: 15px;font-size: 20px;">Login</a>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+
+
+
+            <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight" style="font-size: 30px;"><i class="fa-solid fa-cart-plus"></i></a>
+
+        </div>
+    </nav>
+    <div id="previous" class="top-bar container d-flex align-items-center justify-content-between gap-3 py-2">
+
+        <button onclick="history.back()" class="btn btn-success">
+            Back
+        </button>
+
+        <div class="search-box position-relative flex-grow-1">
+            <input class="form-control" type="search" placeholder="Search items..." id="searchBar"
+                onkeyup="showSuggestions(event)" onkeydown="navigateSuggestions(event)">
+            <div id="suggestBox"></div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="offcanvas offcanvas-end " style="width: 450px;" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasRightLabel">Welcome Dude...❤</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="row">
+
+            </div>
+
+            <h3 class="text-primary">Total cost : <span id="tot">0</span></h3>
+
+
+        </div>
+    </div>
+
+    <div class="container" id="banner">
+
+        <img src="./images/one.png" class=" w-100" alt="...">
+    </div>
+   
+    <div class="one container">
+        <div class="row  ">
+            <h2 class="fw-bold mb-3 mt-3" style="text-align: center;color: rgb(151, 17, 17);">Fresh Coffee, Good
+                Ambience & Delicious Snacks </h2>
+
+            <div class="col-md-4 p-3 border product-card">
+                <img src="./images/samosa.jpg" width="100%" height="250px">
+                <h3>Samosa</h3>
+                <h4>$20.00</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        onclick="product('./samosa.jpg','Samosa',20 )">Add to
+                        cart</button>
+                </div>
+            </div>
+            <div class="col-md-4 p-3 border product-card">
+                <img src="./images/mojito.jpg" width="100%" height="250px">
+                <h3>Mojito</h3>
+                <h4>$90.00</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        onclick="product('./mojito.jpg','Mojito',90 )">Add to cart
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4 p-3 border product-card">
+                <img src="./images/puff.jpg" width="100%" height="250px">
+                <h3>Puff</h3>
+                <h4>$30.00</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        onclick="product('./puff.jpg','Puff',30 )">Add to
+                        cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section -->
+    <section class="about-header" id="about">
+        <h2 class=" fw-bold" style="text-align: center;color: rgb(151, 17, 17);">About Our Cafe</h2>
+    </section>
+
+    <!-- About Info -->
+    <section class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-3" style="color: rgb(151, 17, 17);">Welcome to Mini Cafe</h2>
+                <p>
+                    Mini Cafe is your perfect place to relax and enjoy freshly brewed coffee,
+                    and delicious snacks. We focus on quality, freshness, and a warm ambience where every visitor
+                    feels like family.
+                </p>
+                <p>
+                    Since opening in 2025, our mission has been simple: serve great coffee with love. Whether you're
+                    here for work, a date, or just a peaceful break — we’ve got the perfect atmosphere for you.
+                </p>
+            </div>
+
+            <div class="col-md-6">
+                <img src="https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg"
+                    class="img-fluid rounded shadow" alt="Cafe Image">
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Why Choose Us -->
+    <section class="container py-4 love-us-section">
+        <div class="highlight-box">
+            <h3 class="fw-bold text-center mb-4" style="color: rgb(151, 17, 17);">Why People Love Us</h3>
+
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-success">☕ Freshly Brewed Coffee</h5>
+                    <p>We source high-quality beans for the perfect cup every time.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-success">🍰 Variety of Snacks</h5>
+                    <p>A Good taste.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-success">🎵 Good Ambience</h5>
+                    <p>A calm, relaxing environment for study, work, or chill time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Contact -->
+    <section id="contact" class="container py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4" style="color: rgb(151, 17, 17);">Contact Us</h2>
+            <p class="mb-2">📍 123 Anywhere St., Any City</p>
+            <p class="mb-2">📞 +123-456-7890</p>
+            <p>📧 info@minicafe.com</p>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons mt-4">
+                <a href="#" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Footer -->
+    <footer class=" text-center p-3 mt-4" style="background-image: linear-gradient(#B86947,#EDDD53);">
+        © 2025 Mini Cafe. All Rights Reserved.
+    </footer>
+
+    <style>
+        body {
+            font-family: "Creepster", system-ui;
+
+
+        }
+
+        .love-us-section {
+            background-image: url('./why.jpg');
+            /* replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-link {
+            color: black;
+            font-size: 24px;
+            width: 20px;
+            height: 50px;
+            line-height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .social-link:hover {
+            color: rgb(151, 17, 17);
+            transform: scale(1.2);
+        }
+
+        .one {
+            margin-top: 20px;
+        }
+
+        h3 {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        #home {
+            margin-top: 100px;
+        }
+
+        #banner {
+            margin-top: 10px;
+        }
+
+        #about {
+            margin-top: 50px;
+        }
+
+        #previous {
+            margin-top: 100px;
+        }
+
+
+        /* Product Card Hover Animation */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Image Zoom Hover */
+        .product-card img {
+            transition: transform 0.4s ease;
+            border-radius: 10px;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Fade-in Animation */
+        .product-card {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        /* 🔎 Search Suggestions Modern UI */
+        #suggestBox {
+            position: absolute;
+            background: #fff;
+            max-height: 250px;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            padding: 5px 0;
+            display: none;
+            animation: dropdownFade 0.25s ease;
+            z-index: 2000;
+        }
+
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        /* Individual Suggestion */
+        .suggestion-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 17px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s ease;
+        }
+
+        /* Hover highlight */
+        .suggestion-item:hover {
+            background: #f3d9c1;
+            color: #5a2600;
+            font-weight: 600;
+        }
+
+        /* Last item no border */
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Highlight Glow Animation */
+        .highlight-product {
+            animation: glowPulse 1.5s ease;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0 0 0px rgba(255, 166, 0, 0.0);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(255, 166, 0, 0.7);
+                transform: scale(1.05);
+            }
+
+            100% {
+                box-shadow: 0 0 10px rgba(255, 166, 0, 0.4);
+                transform: scale(1.02);
+            }
+        }
+
+        #contact {
+            background-image: url('./ban.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+
+
+        }
+    </style>
+
+    <script>
+
+
+        // CART Code (unchanged)
+        let cart = [];
+        let total = 0;
+        const row = document.getElementById("row");
+        const tot = document.getElementById("tot");
+
+        function product(img, name, price) {
+            const exists = cart.find(item => item.cartname === name);
+            if (exists) exists.cartquantity += 1;
+            else cart.push({ cartimg: img, cartname: name, cartprice: price, cartquantity: 1 });
+            updateCart();
+        }
+
+        function remove1(name) {
+            cart = cart.filter(item => item.cartname !== name);
+            updateCart();
+        }
+
+        function inc(name) {
+            cart.forEach(item => {
+                if (item.cartname === name) item.cartquantity += 1;
+            });
+            updateCart();
+        }
+
+        function decrease(name) {
+            cart.forEach(item => {
+                if (item.cartname === name && item.cartquantity > 1) item.cartquantity -= 1;
+            });
+            updateCart();
+        }
+
+        function updateCart() {
+            total = 0;           // reset total
+            row.innerHTML = "";   // clear cart items in the UI
+
+            cart.forEach(e => {
+                total += e.cartprice * e.cartquantity;
+
+                row.innerHTML += `
+        <div class="row my-3 p-1 border-bottom">
+            <div class="col-3">
+                <img src="${e.cartimg}" width="100%">
+            </div>
+            <h5 class="col-3 d-flex align-items-center" style="color:brown;">
+                ${e.cartname}
+            </h5>
+            <div class="col-1 d-flex align-items-center">
+                ${e.cartprice}
+            </div>
+            <div class="col-4 d-flex align-items-center">
+                <button class="btn btn-sm btn-success" onclick="inc('${e.cartname}')">+</button>
+                <input type="text" value="${e.cartquantity}" class="mx-2 text-center" style="width:40px" disabled>
+                <button class="btn btn-sm btn-success" onclick="decrease('${e.cartname}')">-</button>
+                <button class="btn btn-close btn-danger m-1 p-2" onclick="remove1('${e.cartname}')"></button>
+            </div>
+        </div>
+        `;
+            });
+
+            tot.innerText = total;
+        }
+
+
+        // ---------------- SEARCH & SUGGESTIONS ----------------
+        const searchBar = document.getElementById("searchBar");
+        const suggestBox = document.getElementById("suggestBox");
+        const menuItems = Array.from(document.querySelectorAll(".product-card"));
+        let suggestions = [];
+
+        function showSuggestions(e) {
+            const query = searchBar.value.toLowerCase().trim();
+            suggestions = [];
+
+            if (query === "") {
+                suggestBox.style.display = "none";
+                return;
+            }
+
+            suggestions = menuItems
+                .map(item => item.querySelector("h3").innerText)
+                .filter(name => name.toLowerCase().includes(query));
+
+            if (suggestions.length > 0) {
+                suggestBox.innerHTML = suggestions
+                    .map((s, i) => `<div class="suggestion-item" onclick="selectSuggestion(${i})">${s}</div>`)
+                    .join("");
+                suggestBox.style.display = "block";
+            } else {
+                suggestBox.style.display = "none";
+            }
+
+            // Handle Enter key
+            if (e.key === "Enter" && suggestions.length > 0) {
+                selectSuggestion(0); // scroll to the first suggestion
+            }
+        }
+
+        function selectSuggestion(index) {
+            const selected = suggestions[index];
+            searchBar.value = selected;
+            suggestBox.style.display = "none";
+
+            const selectedCard = menuItems.find(item =>
+                item.querySelector("h3").innerText.toLowerCase() === selected.toLowerCase()
+            );
+
+            if (selectedCard) {
+                selectedCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+        }
+
+
+
+
+
+    </script>
+
+    <script src="./bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
